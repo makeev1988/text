@@ -1,5 +1,6 @@
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -12,10 +13,12 @@ import java.util.Set;
  * To change this template use File | Settings | File Templates.
  */
 public class PrintCvs {
-    private Set<WordAndCount> listWord;
+    private Collection<WordAndCount> listWord;
+    private int generalCount;
 
-    public PrintCvs(Set<WordAndCount> list){
+    public PrintCvs(Collection<WordAndCount> list, int num){
         listWord = list;
+        generalCount = num;
     }
 
     public void generateCsvFile(String sFileName){
@@ -24,9 +27,9 @@ public class PrintCvs {
             FileWriter fileCsv = new FileWriter(sFileName);
 
             fileCsv.append("Слово");
-            fileCsv.append(',');
+            fileCsv.append('\t');
             fileCsv.append("Частота");
-            fileCsv.append(',');
+            fileCsv.append('\t');
             fileCsv.append("Процент");
             fileCsv.append('\n');
 
@@ -36,10 +39,10 @@ public class PrintCvs {
                 current = (WordAndCount) it.next();
 
                 fileCsv.append(current.getWord());
-                fileCsv.append(',');
-                fileCsv.write(current.getCount());
-                fileCsv.append(',');
-                fileCsv.append("Процент");
+                fileCsv.append('\t');
+                fileCsv.append(String.valueOf(current.getCount()));
+                fileCsv.append('\t');
+                fileCsv.append(String.valueOf(100.f * current.getCount()/generalCount));
                 fileCsv.append('\n');
 
             }
