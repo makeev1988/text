@@ -5,7 +5,7 @@
  * Time: 20:26
  * To change this template use File | Settings | File Templates.
  */
-public class WordAndCount {
+public class WordAndCount implements Comparable<WordAndCount> {
     private String word;
     private int count;
 
@@ -43,16 +43,17 @@ public class WordAndCount {
         return word.hashCode();
     }
 
-//    @Override
-//    public int compareTo(Object o) {
-//        WordAndCount tmp = (WordAndCount)o;
-//        if(this.count < tmp.count){ //текущее меньше полученного
-//            return -1;
-//        }else if(this.count > tmp.count){ //текущее больше полученного
-//            return 1;
-//        }else if (this.word != tmp.word){
-//            return 0;
-//        }
-//        return 0;
-//    }
+    @Override
+    public int compareTo(WordAndCount o) {
+        WordAndCount tmp = (WordAndCount)o;
+        if(this.count <= tmp.count){ //текущее меньше полученного
+            return 1;
+        }else if(this.count > tmp.count){ //текущее больше полученного
+            return -1;
+        }else if (this.word != tmp.word){
+            return 0;
+        }
+        return 0;
+    }
+
 }
