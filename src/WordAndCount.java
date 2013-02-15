@@ -50,7 +50,7 @@ public class WordAndCount implements Comparable<WordAndCount> {
             return 1;
         }else if(this.count > tmp.count){ //текущее больше полученного
             return -1;
-        }else if (this.word != tmp.word){
+        }else if ( !(this.word.equals(tmp.word))){
             return 0;
         }
         return 0;

@@ -11,8 +11,6 @@ import java.util.*;
 public class TextParsing {
 
     public static void main(String[] arg) throws IOException {
-        //System.setProperty("encoding","1551");
-
         Reader in = null;
         BufferedReader br = null;
         int length = 0;
